@@ -3,6 +3,7 @@ package game;
 public abstract class Character {
 
 	protected int id;
+	protected static int idCounter = 0;
 	protected String name;
 	protected int level;
 	protected int maxHealth;
@@ -12,6 +13,18 @@ public abstract class Character {
 	protected int strength;
 	protected int intelligence;
 	//private Weapon weapon;
+	
+	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence) {
+		this.id				= ++idCounter;
+		this.level			= level;
+		this.name			= name;
+		this.maxHealth		= maxHealth;
+		this.currentHealth	= maxHealth;
+		this.maxMana		= maxMana;
+		this.currentMana	= maxMana;	
+		this.strength		= strength;
+		this.intelligence	= intelligence;
+	}
 	
 	public int getId() {
 		return id;
