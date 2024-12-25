@@ -31,6 +31,19 @@ public class NewGame {
 		
 		playerInput.close();
 
+		Weapon Test = new Weapon("Sword", 20, 10, 0, 1); //name, damage, req. Strength, Intelligence and Level
+		
+		playerOne.equipWeapon(Test);
+		
+		System.out.println("-----------------------------");
+		System.out.println("Your weapon:");
+		System.out.println(playerOne.weapon.getName());
+		System.out.println(playerOne.weapon.getDamage()+" Damage");
+		System.out.println("Requirements: ");
+		System.out.println("Strength: "+playerOne.weapon.getRequiredStrength());
+		System.out.println("Intelligence: "+playerOne.weapon.getRequiredIntelligence());
+		System.out.println("Level: "+playerOne.weapon.getRequiredLevel());
+		
 	}
 
 }
