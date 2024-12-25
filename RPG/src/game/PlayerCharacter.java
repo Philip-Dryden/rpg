@@ -18,8 +18,8 @@ public class PlayerCharacter extends Character {
 		return skillPoints;
 	}
 
-	public PlayerCharacter() {
-		super("Testname",1, 40, 20, 10, 10);//name, level, maxHealth, maxMana, strength, intelligence
+	public PlayerCharacter(String name) {
+		super(name,1, 40, 20, 10, 10);//name, level, maxHealth, maxMana, strength, intelligence
 		this.exp = 0;
 		this.maxExpThisLevel = CharacterLevels.getExpMap(this.level);
 	}
