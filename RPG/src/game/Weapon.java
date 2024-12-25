@@ -2,16 +2,12 @@ package game;
 
 public class Weapon {
 
-	private int id;
 	private String name;
 	private int damage;
 	private int requiredStrength;
 	private int requiredIntelligence;
 	private int requiredLevel;
 	
-	public int getId() {
-		return id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -27,4 +23,15 @@ public class Weapon {
 	public int getRequiredLevel() {
 		return requiredLevel;
 	}
+	
+	public Weapon(String name, int damage, int requiredStrength, int requiredIntelligence, int requiredLevel) {
+		super();
+		this.name = name;
+		this.damage = damage;
+		this.requiredStrength = requiredStrength;
+		this.requiredIntelligence = requiredIntelligence;
+		this.requiredLevel = requiredLevel;
+	}
+	
+
 }
