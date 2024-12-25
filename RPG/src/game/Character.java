@@ -12,7 +12,7 @@ public abstract class Character {
 	protected int currentMana;
 	protected int strength;
 	protected int intelligence;
-	//private Weapon weapon;
+	protected Weapon weapon;
 	
 	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence) {
 		this.id				= ++idCounter;
@@ -61,17 +61,10 @@ public abstract class Character {
 	public int getIntelligence() {
 		return intelligence;
 	}
-	/*
+	
 	public Weapon getWeapon() {
 		return weapon;
 	}
-	*/
-
-	
-	
-
-	/*
-	public abstract void triggerEquipWeapon();
 	
 	public void equipWeapon(Weapon weapon) {
 		if (weapon != null && canEquipWeapon(weapon)) {
@@ -81,7 +74,7 @@ public abstract class Character {
 		}
 	}
 	
-	private boolean canEquipWeapon(Weapon weapon) {
+	protected boolean canEquipWeapon(Weapon weapon) {
 		if (weapon.getRequiredStrength() <= getStrength() && 
 			weapon.getRequiredIntelligence() <= getIntelligence() &&
 			weapon.getRequiredLevel() <= getLevel()) {
@@ -91,8 +84,8 @@ public abstract class Character {
 			}
 		}
 	
-	private void setWeapon(Weapon weapon) {
+	protected void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
-	*/
+	
 }
