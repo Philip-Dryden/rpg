@@ -41,5 +41,10 @@ public class PlayerCharacter extends Character {
 		this.currentHealth = this.maxHealth;
 		this.currentMana = this.maxMana;
 	}
+	
 
-}
+		
+		
+	}
+
+
