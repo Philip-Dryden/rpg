@@ -88,8 +88,16 @@ public abstract class Character {
 		this.weapon = weapon;
 	}
 	
-	public void takeDamage(int damage) {
+	public void takeDamage(Combat combat, int damage) {
 		currentHealth -= damage;
+		isAlive(combat);
+	}
+	
+	protected void isAlive (Combat combat) {
+		if (currentHealth < 0) {
+			combat.killFighter(this);
+		}
+
 	}
 	
 }
