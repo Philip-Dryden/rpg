@@ -88,4 +88,8 @@ public abstract class Character {
 		this.weapon = weapon;
 	}
 	
+	public void takeDamage(int damage) {
+		currentHealth -= damage;
+	}
+	
 }
