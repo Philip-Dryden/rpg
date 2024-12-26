@@ -44,6 +44,20 @@ public class NewGame {
 		System.out.println("Intelligence: "+playerOne.weapon.getRequiredIntelligence());
 		System.out.println("Level: "+playerOne.weapon.getRequiredLevel());
 		
+		NonPlayerCharacter npcOne = new NonPlayerCharacter("Orc Warrior", 2, 52, 0, 20, 5);
+		System.out.println("-----------------------------");
+		System.out.println("NPC TEST");
+		System.out.println("-----------------------------");
+		System.out.println("Character ID: "+npcOne.getId());
+		System.out.println("Level: "+npcOne.getLevel());
+		System.out.println("Name: "+npcOne.getName());
+		System.out.println("Maximum Health: "+npcOne.getMaxHealth());
+		System.out.println("Current Health: "+npcOne.getCurrentHealth());
+		System.out.println("Maximum Mana: "+npcOne.getMaxMana());
+		System.out.println("Current Mana: "+npcOne.getCurrentMana());
+		System.out.println("Strength: "+npcOne.getStrength());
+		System.out.println("Intelligence: "+npcOne.getIntelligence());
+		
 	}
 
 }
