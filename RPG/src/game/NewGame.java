@@ -31,9 +31,9 @@ public class NewGame {
 		
 		playerInput.close();
 
-		Weapon Test = new Weapon("Sword", 20, 10, 0, 1); //name, damage, req. Strength, Intelligence and Level
+		Weapon test = new Weapon("Sword", 20, 10, 0, 1); //name, damage, req. Strength, Intelligence and Level
 		
-		playerOne.equipWeapon(Test);
+		playerOne.equipWeapon(test);
 		
 		System.out.println("-----------------------------");
 		System.out.println("Your weapon:");
@@ -58,6 +58,12 @@ public class NewGame {
 		System.out.println("Strength: "+npcOne.getStrength());
 		System.out.println("Intelligence: "+npcOne.getIntelligence());
 		
+		Weapon test2 = new Weapon("Axe", 10, 10, 0, 2); //name, damage, req. Strength, Intelligence and Level
+		npcOne.equipWeapon(test2);
+		
+		Combat testCombat = new Combat(playerOne, npcOne);
+		testCombat.startCombat();
+		//testCombat.attack(playerOne, npcOne);
 	}
 
 }
