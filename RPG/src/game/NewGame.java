@@ -63,7 +63,15 @@ public class NewGame {
 		
 		Combat testCombat = new Combat(playerOne, npcOne);
 		testCombat.startCombat();
-		//testCombat.attack(playerOne, npcOne);
+		
+		Inventory testInventory		= new Inventory(playerOne);
+		Item testItemHealingPotion	= new Consumable("healingPotion", 20, 0);//name, restoredHealth, restoredMana
+		Armour testArmour 			= new Armour("Test Armour", 30, 0, 5, 90);//name, requiredStrength, requiredIntelligence, requiredLevel, armourValue
+		testInventory.addItem(testItemHealingPotion);
+		testInventory.addItem(test);//should add the sword from line 34
+		playerOne.inventory.addItem(testArmour);//alternative method to add items
+
+		playerOne.inventory.showInventory();
 	}
 
 }
