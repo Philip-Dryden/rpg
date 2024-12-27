@@ -1,58 +1,76 @@
 package game;
-import java.util.Scanner;
 
 public class Combat {
 	
 	private PlayerCharacter player;
 	private NonPlayerCharacter npc;
+	private boolean playerAlive;
+	private boolean npcAlive;
 	private int rounds;
+	
+	
 	
 	public Combat (PlayerCharacter player, NonPlayerCharacter npc) {
 		this.player	= player;
 		this.npc	= npc;
+		playerAlive = true;
+		npcAlive	= true;
+		rounds		= 0;
 	}
 	
 	public void startCombat () {
 		do {
 			combatRound();
 		}		
-		while (player.getCurrentHealth() > 0 && npc.getCurrentHealth() > 0);
+		while (playerAlive == true && npcAlive == true);
 	}
 	
-	private void combatRound() {	
-		++rounds;
-		playerTurn();
-		npcTurn();		
+	private void combatRound() {//TODO: Replace this with a better system with less redundancies
+								//one central check if both are still alive should be enough
+		while (playerAlive == true && npcAlive == true) {
+			++rounds;
+			playerTurn();		
+			npcTurn();		
+		} ;
 	}
 	
 	private void playerTurn() {
-		String playerCombatAbilities [] = new String [] {"Attack"};
-		Scanner combatInput = new Scanner(System.in);
-		System.out.println("Your Turn!");
-		System.out.println("----------");
-		for (int i = 0; i < playerCombatAbilities.length; i++) {
-			System.out.println(playerCombatAbilities[i]+"["+i+"]");
+		if (playerAlive == true && npcAlive == true) {
+			attack(player, npc);
 		}
-		String playerChoice = combatInput.nextLine();
-		if (playerChoice.equals("Attack")) {
-			attack(player, npc); 
+	}
+	
+	public void npcTurn() {	
+		if (playerAlive == true && npcAlive == true) {
+			attack(npc, player);
 		}
-		combatInput.close();
-		//unfinished
+	}
+	
+	public void attack(Character attacker, Character defender) {
+		int dmg = attacker.weapon.getDamage() + attacker.getStrength();
+		System.out.println(attacker.getName()+" attacks "+defender.getName()+" with "+attacker.weapon.getName()+" and deals "+dmg+" damage.");
+		//later this will include damage mitigation like armour
+		defender.takeDamage(this, attacker, dmg);
 		
 	}
 	
-	private void npcTurn() {}
+	public void attackResult(Character attacker, Character defender, int damage) {
+		System.out.println(defender.getName()+" loses "+damage+" Health Points and now has "+defender.getCurrentHealth()+" Health Points left.");	
+	}
 	
-	private void attack(Character attacker, Character defender) {
-		
-	int dmg = attacker.weapon.getDamage() + attacker.getStrength();
-	System.out.println(attacker+" attacks "+defender+" with "+attacker.weapon+" and deals "+dmg+" damage.");
-	//later this will include damage mitigation like armour
-	defender.takeDamage(dmg);
-	System.out.println(defender+" loses "+dmg+" Health Points and now has "+defender.getCurrentHealth()+" Health Points left.");
-		
-		
+	public void killFighter (Character deadFighter) {
+		System.out.println(deadFighter.getName()+" has died!"); 
+		if (deadFighter == player){
+			System.out.println("Game Over!");
+			//TODO: gameOver method
+			playerAlive = false;
+		}
+		else if (deadFighter == npc) {
+			System.out.println("Victory!");
+			//TODO: generate Loot, Exp and add Quest functionality
+			npcAlive = false;
+		}
+		else {System.out.println("Error: Variable deadFighter is neither player nor npc: "+deadFighter);}
 	}
 
 }
