@@ -13,6 +13,7 @@ public abstract class Character {
 	protected int strength;
 	protected int intelligence;
 	protected Weapon weapon;
+	protected Inventory inventory;
 	
 	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence) {
 		this.id				= ++idCounter;
@@ -64,6 +65,14 @@ public abstract class Character {
 	
 	public Weapon getWeapon() {
 		return weapon;
+	}
+	
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
+	public void setInventory (Inventory inventory) {
+		this.inventory = inventory;
 	}
 	
 	public void equipWeapon(Weapon weapon) {
