@@ -14,17 +14,20 @@ public abstract class Character {
 	protected int intelligence;
 	protected Weapon weapon;
 	protected Inventory inventory;
+	protected CharacterEquipment characterEquipment;
 	
-	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence) {
-		this.id				= ++idCounter;
-		this.level			= level;
-		this.name			= name;
-		this.maxHealth		= maxHealth;
-		this.currentHealth	= maxHealth;
-		this.maxMana		= maxMana;
-		this.currentMana	= maxMana;	
-		this.strength		= strength;
-		this.intelligence	= intelligence;
+	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence, Inventory inventory, CharacterEquipment characterEquipment) {
+		this.id					= ++idCounter;
+		this.level				= level;
+		this.name				= name;
+		this.maxHealth			= maxHealth;
+		this.currentHealth		= maxHealth;
+		this.maxMana			= maxMana;
+		this.currentMana		= maxMana;	
+		this.strength			= strength;
+		this.intelligence		= intelligence;
+		this.inventory			= inventory;
+		this.characterEquipment = characterEquipment;
 	}
 	
 	public int getId() {
