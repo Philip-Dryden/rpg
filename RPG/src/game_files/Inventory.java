@@ -1,4 +1,4 @@
-package game;
+package game_files;
 import java.util.ArrayList;
 
 public class Inventory {
