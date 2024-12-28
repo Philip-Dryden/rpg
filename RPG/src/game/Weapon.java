@@ -8,8 +8,8 @@ public class Weapon extends Equipment {
 		return damage;
 	}
 
-	public Weapon(String name, int damage, int requiredStrength, int requiredIntelligence, int requiredLevel) {
-		super(name, requiredStrength, requiredIntelligence, requiredLevel);
+	public Weapon(String name, String equipmentSlot, int damage, int requiredStrength, int requiredIntelligence, int requiredLevel) {
+		super(name, equipmentSlot, requiredStrength, requiredIntelligence, requiredLevel);
 		this.damage = damage;
 	}
 	
