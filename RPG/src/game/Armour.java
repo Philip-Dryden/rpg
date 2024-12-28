@@ -9,8 +9,8 @@ public class Armour extends Equipment {
 	}
 
 
-	public Armour (String name, int requiredStrength, int requiredIntelligence, int requiredLevel, int armourValue) {
-		super(name, requiredStrength, requiredIntelligence, requiredLevel);
+	public Armour (String name, String equipmentSlot, int requiredStrength, int requiredIntelligence, int requiredLevel, int armourValue) {
+		super(name, equipmentSlot, requiredStrength, requiredIntelligence, requiredLevel);
 		this.armourValue = armourValue;
 		
 	}
