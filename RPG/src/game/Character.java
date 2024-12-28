@@ -16,7 +16,7 @@ public abstract class Character {
 	protected Inventory inventory;
 	protected CharacterEquipment characterEquipment;
 	
-	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence, Inventory inventory, CharacterEquipment characterEquipment) {
+	public Character(String name, int level, int maxHealth, int maxMana, int strength, int intelligence) {
 		this.id					= ++idCounter;
 		this.level				= level;
 		this.name				= name;
@@ -26,8 +26,8 @@ public abstract class Character {
 		this.currentMana		= maxMana;	
 		this.strength			= strength;
 		this.intelligence		= intelligence;
-		this.inventory			= inventory;
-		this.characterEquipment = characterEquipment;
+		this.inventory			= new Inventory(this);
+		this.characterEquipment = new CharacterEquipment(this);
 	}
 	
 	public int getId() {
