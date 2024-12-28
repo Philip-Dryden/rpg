@@ -1,5 +1,6 @@
 package game;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CharacterEquipment {
 	
@@ -26,6 +27,39 @@ public class CharacterEquipment {
 		characterEquipment.put("offHand", 	null);
 	}
 	
+	public void equip(Equipment equipment){	
+		if (canEquip(equipment)) {
+			String slot = equipment.getEquipmentSlot();
+			if (characterEquipment.containsKey(slot)) {
+				characterEquipment.put(slot, equipment);
+				System.out.println("Successfully equipped "+equipment.getName()+"!");
+			} else {
+				System.out.println("Can't equip "+equipment+" since HashMap doesn't contain its equipment slot "+equipment.getEquipmentSlot());
+			}
+		} else {
+			System.out.println("Can't equip "+equipment.getName()+" because the requirements aren't met.");
+		}
+	}
 	
-	
+	private Boolean canEquip(Equipment equipment) {
+		if (equipment.getRequiredStrength() 	<= equipmentOwner.getStrength()		 && 
+			equipment.getRequiredIntelligence() <= equipmentOwner.getIntelligence()	 &&
+			equipment.getRequiredLevel() 		<= equipmentOwner.getLevel()) {
+				return true;
+			} else {
+				return false;
+				}
+	}
+	public void showCharacterEquipment() {
+		for (Map.Entry<String, Equipment> entry: characterEquipment.entrySet()) {
+			if (entry.getValue() == null) {
+				System.out.println("Equipment Slot "+entry.getKey()+" is empty!");
+			} else {
+			System.out.println("Equipment Slot "+entry.getKey()+" contains "+entry.getValue().getName());
+			}
+		}
+	}
 }
+
+	
+
