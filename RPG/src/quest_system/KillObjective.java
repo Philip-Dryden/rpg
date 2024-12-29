@@ -1,13 +1,12 @@
 package quest_system;
-import game_files.NonPlayerCharacter;
 
 public class KillObjective extends QuestObjective {
 	
-	private NonPlayerCharacter killTarget;
+	private String killTarget;
 	private int requiredKills;
 	private int killCount;
 	
-	public NonPlayerCharacter getKillTarget() {
+	public String getKillTarget() {
 		return killTarget;
 	}
 	public int getRequiredKills() {
@@ -17,7 +16,7 @@ public class KillObjective extends QuestObjective {
 		return killCount;
 	}
 	
-	public KillObjective(String objectiveName, NonPlayerCharacter killTarget, int requiredKills){
+	public KillObjective(String objectiveName, String killTarget, int requiredKills){
 		super(objectiveName);
 		this.killTarget		= killTarget;
 		this.requiredKills	= requiredKills;
