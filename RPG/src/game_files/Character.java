@@ -50,6 +50,10 @@ public abstract class Character {
 		return currentHealth;
 	}
 	
+	public void healCompletely() {
+		this.currentHealth = this.maxHealth;
+	}
+	
 	public int getMaxMana() {
 		return maxMana;
 	}
