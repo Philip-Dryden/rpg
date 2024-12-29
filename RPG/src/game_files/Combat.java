@@ -1,5 +1,7 @@
 package game_files;
 
+import quest_system.QuestLog;
+
 public class Combat {
 	
 	private PlayerCharacter player;
@@ -69,6 +71,7 @@ public class Combat {
 		}
 		else if (deadFighter == npc) {
 			System.out.println("Victory!");
+			QuestLog.checkForKillTarget(deadFighter.getName());//informs the QuestLog that this NPC was killed and lets it check if this is relevant to a Quest Objective
 			//TODO: generate Loot, Exp and add Quest functionality
 			npcAlive = false;
 			
