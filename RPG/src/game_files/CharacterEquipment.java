@@ -59,6 +59,12 @@ public class CharacterEquipment {
 			}
 		}
 	}
+	public Equipment getEquipmentSlot(String equipmentSlot) {
+		return characterEquipment.get(equipmentSlot);
+	}
+	public Weapon getEquippedWeapon(String weaponSlot) {
+		return (Weapon)characterEquipment.get(weaponSlot);
+	}
 }
 
 	
