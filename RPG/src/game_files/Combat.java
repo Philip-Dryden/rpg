@@ -8,7 +8,9 @@ public class Combat {
 	private boolean npcAlive;
 	private int rounds;
 	
-	
+	public  NonPlayerCharacter getNonPlayerCharacter () {
+		return npc;
+	}
 	
 	public Combat (PlayerCharacter player, NonPlayerCharacter npc) {
 		this.player	= player;
@@ -47,8 +49,8 @@ public class Combat {
 	}
 	
 	public void attack(Character attacker, Character defender) {
-		int dmg = attacker.weapon.getDamage() + attacker.getStrength();
-		System.out.println(attacker.getName()+" attacks "+defender.getName()+" with "+attacker.weapon.getName()+" and deals "+dmg+" damage.");
+		int dmg = attacker.characterEquipment.getEquippedWeapon("mainHand").getDamage() + attacker.getStrength();
+		System.out.println(attacker.getName()+" attacks "+defender.getName()+" with "+attacker.characterEquipment.getEquippedWeapon("mainHand").getName()+" and deals "+dmg+" damage.");
 		//later this will include damage mitigation like armour
 		defender.takeDamage(this, attacker, dmg);
 		
@@ -69,6 +71,7 @@ public class Combat {
 			System.out.println("Victory!");
 			//TODO: generate Loot, Exp and add Quest functionality
 			npcAlive = false;
+			
 		}
 		else {System.out.println("Error: Variable deadFighter is neither player nor npc: "+deadFighter);}
 	}
