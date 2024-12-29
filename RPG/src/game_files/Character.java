@@ -12,7 +12,6 @@ public abstract class Character {
 	protected int currentMana;
 	protected int strength;
 	protected int intelligence;
-	protected Weapon weapon;
 	protected Inventory inventory;
 	protected CharacterEquipment characterEquipment;
 	
@@ -70,10 +69,6 @@ public abstract class Character {
 		return intelligence;
 	}
 	
-	public Weapon getWeapon() {
-		return weapon;
-	}
-	
 	public Inventory getInventory() {
 		return inventory;
 	}
@@ -81,29 +76,7 @@ public abstract class Character {
 	public void setInventory (Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
-	public void equipWeapon(Weapon weapon) {
-		if (weapon != null && canEquipWeapon(weapon)) {
-		setWeapon(weapon);
-		} else {
-			System.out.println("Can't equip this weapon.");
-		}
-	}
-	
-	protected boolean canEquipWeapon(Weapon weapon) {
-		if (weapon.getRequiredStrength() <= getStrength() && 
-			weapon.getRequiredIntelligence() <= getIntelligence() &&
-			weapon.getRequiredLevel() <= getLevel()) {
-			return true;
-		} else {
-			return false;
-			}
-		}
-	
-	protected void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
-	}
-	
+		
 	public int takeDamage(Combat combat, Character attacker, int damage) {
 		currentHealth -= damage;
 		combat.attackResult(attacker, this, damage);
