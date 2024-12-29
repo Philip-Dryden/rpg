@@ -20,4 +20,34 @@ public class QuestLog {
 		activeQuests.remove(quest);
 	}
 	
+	public static void checkForKillTarget(String killedNPC) {
+			for (Quest quest: activeQuests) {
+				for (KillObjective killObjective: quest.getKillObjectiveList()) {
+					if (killObjective.getKillTarget() == killedNPC) {
+						killObjective.increaseKillCount();
+						System.out.println("Kill Count of "+killObjective.getObjectiveName()+ " has increased by 1!");
+						System.out.println("Kill Count of "+killObjective.getObjectiveName()+ " is now "+killObjective.getKillCount());
+						checkQuest(quest);
+					}
+				}
+			}
+	}
+	
+	public static void checkQuest(Quest quest) {
+		quest.checkAllKillObjectives();
+		if (quest.getIsCompleted()) {
+			System.out.println(quest.getQuestName()+" is completed!");
+		} else {
+			System.out.println(quest.getQuestName()+" is not completed yet!");
+		}
+		
+	}
+				
+			
+			
+			
+			
+			
+	
+	
 }
