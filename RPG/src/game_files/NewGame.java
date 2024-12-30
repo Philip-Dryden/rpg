@@ -1,5 +1,6 @@
 package game_files;
 import quest_system.Quest;
+import quest_system.QuestLog;
 import quest_system.KillObjective;
 
 import java.util.Scanner;
@@ -39,26 +40,14 @@ public class NewGame {
 		KillObjective testKill2		= new KillObjective("5 Wolfs killed", "Wolf", 5);
 		testQuest.addKillObjective(testKill);
 		testQuest.addKillObjective(testKill2);
-		for (KillObjective killObjective: testQuest.getKillObjectiveList()) {
-			System.out.println(killObjective.getObjectiveName());
-			System.out.println(killObjective.getKillTarget());
-			System.out.println(killObjective.getRequiredKills());
-			System.out.println(killObjective.getKillCount());
-			System.out.println(killObjective.getIsCompleted());
-			System.out.println("******************************");
-		}
-
+		QuestLog.addQuest(testQuest);
+		
 
 		Combat testCombat			= new Combat(playerOne, orc);
 		testCombat.startCombat();
-		System.out.println("killed NPC is: "+testCombat.getNonPlayerCharacter().getName());
-		for (KillObjective killObjective: testQuest.getKillObjectiveList()) {
-			if (killObjective.getKillTarget() == testCombat.getNonPlayerCharacter().getName()) {
-				killObjective.increaseKillCount();
-				System.out.println("Kill Count of "+killObjective.getObjectiveName()+ " has increased by 1!");
-			}
-		}
 		
+		
+/*		
 		System.out.println(testQuest.getIsCompleted());
 		for (KillObjective killObjective: testQuest.getKillObjectiveList()) {
 			System.out.println(killObjective.getObjectiveName());
@@ -68,11 +57,12 @@ public class NewGame {
 			System.out.println(killObjective.getIsCompleted());
 			System.out.println("******************************");
 		}
+		
 		System.out.println(testQuest.getIsCompleted());
 		testQuest.checkAllKillObjectives();
 		System.out.println(testQuest.getIsCompleted());
-		
-		for (int i = 0; i < 7; i++) {
+*/		
+		for (int i = 0; i < 5; i++) {
 			System.out.println("******************************");
 			System.out.println("new Wolf");
 			playerOne.healCompletely();
@@ -83,13 +73,7 @@ public class NewGame {
 			Combat test2Combat			= new Combat(playerOne, wolf);
 			test2Combat.startCombat();
 			System.out.println("killed NPC is: "+test2Combat.getNonPlayerCharacter().getName());
-			for (KillObjective killObjective: testQuest.getKillObjectiveList()) {
-				if (killObjective.getKillTarget() == test2Combat.getNonPlayerCharacter().getName()) {
-					killObjective.increaseKillCount();
-					System.out.println("Kill Count of "+killObjective.getObjectiveName()+ " has increased by 1!");
-					System.out.println("Kill Count of "+killObjective.getObjectiveName()+ " is now "+killObjective.getKillCount());
-				}
-			}
+			
 			System.out.println(testQuest.getIsCompleted());
 			
 			testQuest.checkAllKillObjectives();
