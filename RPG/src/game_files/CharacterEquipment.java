@@ -59,6 +59,16 @@ public class CharacterEquipment {
 			}
 		}
 	}
+	public int getArmourValue() {
+		int armourValue = 0;
+		for (Map.Entry<String, Equipment> entry: characterEquipment.entrySet()) {
+			if (entry.getValue() != null && entry.getValue() instanceof Armour) {
+				Armour armour = (Armour) entry.getValue();
+				armourValue += armour.getArmourValue();
+			}
+		}
+		return armourValue;
+	}
 	public Equipment getEquipmentSlot(String equipmentSlot) {
 		return characterEquipment.get(equipmentSlot);
 	}
