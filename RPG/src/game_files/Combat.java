@@ -51,14 +51,18 @@ public class Combat {
 	}
 	
 	public void attack(Character attacker, Character defender) {
-		int dmg = attacker.characterEquipment.getEquippedWeapon("mainHand").getDamage() + attacker.getStrength();
+		int dmg = attacker.characterEquipment.getEquippedWeapon("mainHand").getDamage() + attacker.getStrength(); 
+		double damageMitigation = defender.characterEquipment.getArmourValue() / 10;
+		int damageResult = (int) Math.round(dmg * (1 - damageMitigation / 100));	
+		int damagePrevented = dmg - damageResult;
 		System.out.println(attacker.getName()+" attacks "+defender.getName()+" with "+attacker.characterEquipment.getEquippedWeapon("mainHand").getName()+" and deals "+dmg+" damage.");
-		//later this will include damage mitigation like armour
-		defender.takeDamage(this, attacker, dmg);
+		System.out.println(defender.getName()+"'s armour prevents "+damagePrevented+".");
+		System.out.println(defender.getName()+" takes "+damageResult+" damage.");
+		defender.takeDamage(this, attacker, damageResult);
 		
 	}
 	
-	public void attackResult(Character attacker, Character defender, int damage) {
+	public void attackResult(Character attacker, Character defender, double damage) {
 		System.out.println(defender.getName()+" loses "+damage+" Health Points and now has "+defender.getCurrentHealth()+" Health Points left.");	
 	}
 	
